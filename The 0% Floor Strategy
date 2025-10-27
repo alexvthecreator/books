@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The "0% Floor" Strategy</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for readability */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+    <script>
+        // Custom Tailwind config to add the Inter font family
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        myBlue: {
+                            DEFAULT: '#00529B', // rgb(0, 82, 155)
+                            dark: '#003a70'
+                        },
+                        myGreen: {
+                            DEFAULT: '#009432' // rgb(0, 148, 50)
+                        },
+                        myRed: {
+                            DEFAULT: '#C00000' // rgb(192, 0, 0)
+                        },
+                        boxGray: {
+                            DEFAULT: '#F0F0F0' // rgb(240, 240, 240)
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white font-sans">
+
+    <!-- Main Container -->
+    <div class="max-w-2xl mx-auto p-6 md:p-10">
+
+        <!-- Legal Disclaimer -->
+        <div class="mb-12 p-4 bg-gray-100 rounded-lg border border-gray-300" id="disclaimer">
+            <h3 class="text-lg font-bold text-gray-800 mb-3">Important Legal Disclaimer</h3>
+            <p class="text-sm text-gray-600 leading-normal mb-2">
+                This document is for informational and educational purposes only and does not constitute financial, investment, legal, or tax advice. The information contained herein is general in nature and is not specific to you or anyone else. We make no representations, warranties, or guarantees as to the accuracy, completeness, or timeliness of the information.
+            </p>
+            <p class="text-sm text-gray-600 leading-normal mb-2">
+                All examples, case studies, and hypothetical scenarios are for illustrative purposes only. Past performance is not an indicator of future results, and any discussion of potential gains or "floors" does not guarantee future outcomes. Financial products, including but not limited to annuities and indexed universal life insurance (IUL), are complex, have associated costs, and may not be suitable for all individuals.
+            </p>
+            <p class="text-sm text-gray-600 leading-normal mb-2">
+                This material has not been reviewed, approved, or endorsed by any regulatory body, including but not limited to the Securities and Exchange Commission (SEC), FINRA, the Federal Trade Commission (FTC), or the Federal Communications Commission (FCC).
+            </p>
+            <p class="text-sm text-gray-600 leading-normal mb-2">
+                You should not act or refrain from acting on the basis of any information in this document without first seeking advice from a qualified professional, such as a licensed financial advisor, attorney, and/or accountant, who can assess your individual situation and objectives.
+            </p>
+            <p class="text-sm text-gray-600 leading-normal">
+                By reading this document, you agree that the author and publisher are not responsible or liable for any direct or indirect losses or damages arising from the use of this information.
+            </p>
+        </div>
+        <!-- End Legal Disclaimer -->
+
+        <!-- Custom Title Page -->
+        <div class="h-screen flex flex-col justify-center items-center text-center -mt-16">
+            <h1 class="text-5xl md:text-6xl font-bold text-myBlue leading-tight">
+                The "0% Floor" Strategy
+            </h1>
+            <h2 class="text-3xl md:text-4xl font-bold mt-8 leading-tight">
+                How to Capture Market Gains Without Ever Risking a Loss.
+            </h2>
+            <p class="text-2xl italic text-gray-600 mt-12">
+                A Modern Approach to Protecting Your Retirement
+            </p>
+        </div>
+        <!-- End Title Page -->
+
+        <!-- Section: The "Retiree's Dilemma" -->
+        <section class="mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-myBlue mb-6">The "Retiree's Dilemma"</h2>
+            
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                For 40 years, you're told to save in a 401(k) or IRA.
+            </p>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                The "experts" tell you to risk your money in the market to get growth.
+            </p>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                Then, they tell you to move to "safe" bonds as you get older, where your money is eaten alive by inflation.
+            </p>
+            <p class="text-xl text-gray-800 font-bold leading-relaxed mb-6">
+                This is the <strong>Retiree's Dilemma:</strong>
+            </p>
+            <ul class="list-none space-y-4 mb-6">
+                <li class="text-xl leading-relaxed flex items-start">
+                    <span class="text-myBlue font-bold mr-3">&#9656;</span>
+                    <strong>OPTION A (RISK):</strong> Stay in the market and pray a crash doesn't wipe out 30% of your life savings.
+                </li>
+                <li class="text-xl leading-relaxed flex items-start">
+                    <span class="text-myBlue font-bold mr-3">&#9656;</span>
+                    <strong>OPTION B (INFLATION):</strong> Flee to "safety" and watch your purchasing power die a slow death.
+                </li>
+            </ul>
+
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                What if this is a false choice?
+                What if you could reject both options?
+            </p>
+
+            <!-- Insight Box -->
+            <div class="bg-boxGray border-l-8 border-myBlue rounded-r-lg p-6 my-10 shadow-lg">
+                <p class="text-2xl font-bold text-myBlue mb-3">The \$1,000 Insight:</p>
+                <p class="text-xl text-black leading-relaxed">
+                    Traditional retirement plans force you to choose between <strong class="text-myRed">Market Risk</strong> and <strong class="text-myRed">Inflation Risk</strong>. This guide shows you the third option they don't talk about.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section: Catastrophic Risk -->
+        <section class="mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-myBlue mb-6">The Catastrophic Risk No One Talks About</h2>
+            
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                This is the most important concept a retiree can understand.
+            </p>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                It's called <strong>Sequence of Returns Risk</strong>.
+            </p>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                It's a simple concept: <strong>WHEN your returns happen matters more than your <em>average</em> return.</strong>
+            </p>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                Let's look at two retirees. Both have \$1,000,000. Both need to withdraw \$50,000 (5%) per year to live.
+            </p>
+            <ul class="list-none space-y-4 mb-6">
+                <li class="text-xl leading-relaxed flex items-start">
+                    <span class="text-myBlue font-bold mr-3">&#9656;</span>
+                    <strong>Retiree A (Traditional 60/40 Plan):</strong> Retires into a bear market.
+                </li>
+                <li class="text-xl leading-relaxed flex items-start">
+                    <span class="text-myBlue font-bold mr-3">&#9656;</span>
+                    <strong>Retiree B (0% Floor Strategy):</strong> Retires into the <em>exact same</em> bear market.
+                </li>
+            </ul>
+
+            <!-- Table 1 -->
+            <p class="text-lg font-semibold text-gray-800 mt-8 mb-2">Retiree A (Traditional 60/40)*</p>
+            <div class="overflow-x-auto shadow-md rounded-lg">
+                <table class="w-full text-lg text-left text-gray-700">
+                    <thead class="text-lg text-gray-900 bg-gray-200">
+                        <tr>
+                            <th scope="col" class="py-3 px-6">Year</th>
+                            <th scope="col" class="py-3 px-6">Market</th>
+                            <th scope="col" class="py-3 px-6">Calculation</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        <tr class="border-b">
+                            <td class="py-4 px-6 font-bold">Start</td>
+                            <td class="py-4 px-6"></td>
+                            <td class="py-4 px-6 font-bold">\$1,000,000</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-4 px-6">Year 1</td>
+                            <td class="py-4 px-6 text-myRed font-medium">-20%</td>
+                            <td class="py-4 px-6">(\$800,000) - \$50,000 = <strong class="text-myRed">\$750,000</strong></td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-4 px-6">Year 2</td>
+                            <td class="py-4 px-6 text-myRed font-medium">-15%</td>
+                            <td class="py-4 px-6">(\$637,500) - \$50,000 = <strong class="text-myRed">\$587,500</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6">Year 3</td>
+                            <td class="py-4 px-6 text-myGreen font-medium">+10%</td>
+                            <td class="py-4 px-6">(\$646,250) - \$50,000 = <strong class="text-myRed">\$596,250</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xl text-gray-800 leading-relaxed my-6">
+                After 3 years, Retiree A has lost nearly <strong>40%</strong> of their money. They are in a death spiral and will likely go broke.
+            </p>
+
+            <!-- Table 2 -->
+            <p class="text-lg font-semibold text-gray-800 mt-8 mb-2">Retiree B (0% Floor Strategy)</p>
+            <div class="overflow-x-auto shadow-md rounded-lg">
+                <table class="w-full text-lg text-left text-gray-700">
+                    <thead class="text-lg text-gray-900 bg-gray-200">
+                        <tr>
+                            <th scope="col" class="py-3 px-6">Year</th>
+                            <th scope="col" class="py-3 px-6">Market</th>
+                            <th scope="col" class="py-3 px-6">Calculation</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        <tr class="border-b">
+                            <td class="py-4 px-6 font-bold">Start</td>
+                            <td class="py-4 px-6"></td>
+                            <td class="py-4 px-6 font-bold">\$1,000,000</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-4 px-6">Year 1</td>
+                            <td class="py-4 px-6 text-myRed font-medium">-20%</td>
+                            <td class="py-4 px-6">(\$1,000,000) - \$50,000 = <strong class="text-myGreen">\$950,000</strong></td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-4 px-6">Year 2</td>
+                            <td class="py-4 px-6 text-myRed font-medium">-15%</td>
+                            <td class="py-4 px-6">(\$950,000) - \$50,000 = <strong class="text-myGreen">\$900,000</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6">Year 3</td>
+                            <td class="py-4 px-6 text-myGreen font-medium">+10%</td>
+                            <td class="py-4 px-6">(\$990,000) - \$50,000 = <strong class="text-myGreen">\$940,000</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Insight Box -->
+            <div class="bg-boxGray border-l-8 border-myBlue rounded-r-lg p-6 my-10 shadow-lg">
+                <p class="text-2xl font-bold text-myBlue mb-3">The Result:</p>
+                <p class="text-xl text-black leading-relaxed">
+                    <strong>Retiree A is facing financial ruin. Retiree B is whole.</strong> The "0% Floor" completely neutralized the number one risk in retirement. This single concept is the "secret" to a truly protected retirement.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section: Tax Time Bomb -->
+        <section class="mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-myBlue mb-6">The Second Catastrophe: The Tax Time Bomb</h2>
+            
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                Let's say you win. You successfully save \$1 Million in your 401(k).
+            </p>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                You don't have \$1 Million.
+                You have a \$1 Million problem.
+            </p>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                Your 401(k) or IRA is a <strong>tax-deferred</strong> account. This is a partnership with the government. You saved on taxes up front, but you will pay them on <em>everything</em> you pull out.
+            </p>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                And with national debt soaring, do you believe tax rates will be lower in 10, 15, or 20 years?
+            </p>
+            
+            <!-- Placeholder for an image of a ticking time bomb -->
+            <div class="text-center my-8">
+                <img src="https://placehold.co/400x300/e0e0e0/555555?text=Ticking+Tax+Bomb" alt="Ticking tax time bomb" class="inline-block rounded-lg shadow-md"
+                     onerror="this.src='https://placehold.co/400x300/e0e0e0/555555?text=Image+Placeholder'">
+            </div>
+
+            <!-- Insight Box -->
+            <div class="bg-boxGray border-l-8 border-myBlue rounded-r-lg p-6 my-10 shadow-lg">
+                <p class="text-2xl font-bold text-myBlue mb-3">The \$1,000,000 Question:</p>
+                <p class="text-xl text-black leading-relaxed mb-4">
+                    Which would you rather have?
+                </p>
+                <ul class="list-none space-y-4">
+                    <li class="text-xl leading-relaxed">
+                        <strong>A) \$1,000,000 in a 401(k)</strong>, which, after 30% in future taxes, is <strong class="text-2xl text-myRed">\$700,000</strong> to spend.
+                    </li>
+                    <li class="text-xl leading-relaxed">
+                        <strong>B) \$1,000,000 in a "0% Floor" IUL</strong>, which you can access 100% <strong class="text-2xl text-myGreen">tax-free</strong>.
+                    </li>
+                </ul>
+                <p class="text-xl text-black leading-relaxed font-bold mt-6">
+                    It's not what you <em>make</em>, it's what you <em>keep</em>.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section: Unfair Advantage -->
+        <section class="mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-myBlue mb-6">The "Unfair Advantage": How It Works</h2>
+            
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                The "0% Floor" is the engine inside two modern financial vehicles:
+            </p>
+            <ul class="list-none space-y-4 mb-6">
+                <li class="text-xl leading-relaxed flex items-start">
+                    <span class="text-myBlue font-bold mr-3">&#9656;</span>
+                    <strong>Fixed Index Annuities (FIAs)</strong>
+                </li>
+                <li class="text-xl leading-relaxed flex items-start">
+                    <span class="text-myBlue font-bold mr-3">&#9656;</span>
+                    <strong>Indexed Universal Life (IUL) policies</strong>
+                </li>
+            </ul>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                You are not "in the market." The insurance company credits your account with interest <em>based on</em> a market index (like the S&P 500).
+            </p>
+
+            <p class="text-2xl font-bold text-gray-900 mt-8 mb-4">1. When the market goes UP...</p>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                You get a portion of the gain, credited as interest. This is often limited by a "Cap" (e.g., 10%). If the market does 25%, you get 10%.
+            </p>
+
+            <p class="text-2xl font-bold text-gray-900 mt-8 mb-4">2. When the market goes DOWN...</p>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                You get <strong class="text-myGreen text-2xl">0%</strong>. You lose absolutely nothing.
+            </p>
+
+            <p class="text-2xl font-bold text-gray-900 mt-8 mb-4">3. This is the "secret":</p>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                The next year, you start from your <em>new, higher value</em>. This is called the "Lock & Reset." You are always compounding from your new high point.
+            </p>
+
+            <!-- Insight Box -->
+            <div class="bg-boxGray border-l-8 border-myBlue rounded-r-lg p-6 my-10 shadow-lg">
+                <p class="text-2xl font-bold text-myBlue mb-3">The "Catch" (And Why It's Worth It):</p>
+                <p class="text-xl text-black leading-relaxed mb-4">
+                    The "catch" is you give up the home-run gains. You'll never get the 30% up-year.
+                </p>
+                <p class="text-xl text-black leading-relaxed">
+                    You are trading <strong>unlimited upside</strong> for <strong>zero downside</strong>. It's a trade retirees are winning every single day.
+                </p>
+            </div>
+        </section>
+        
+        <!-- Section: The Vehicles -->
+        <section class="mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-myBlue mb-6">The Vehicles: IUL vs. FIA</h2>
+            <p class="text-xl text-gray-800 leading-relaxed mb-8">
+                Both use the 0% floor. What's the difference?
+            </p>
+
+            <div class="overflow-x-auto shadow-md rounded-lg">
+                <table class="w-full text-lg text-left text-gray-700">
+                    <thead class="text-lg text-gray-900 bg-gray-200">
+                        <tr>
+                            <th scope="col" class="py-4 px-6">Feature</th>
+                            <th scope="col" class="py-4 px-6">FIA (Annuity)</th>
+                            <th scope="col" class="py-4 px-6">IUL (Life Insurance)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        <tr class="border-b">
+                            <td class="py-4 px-6 font-bold">Main Goal</td>
+                            <td class="py-4 px-6">Accumulation & Income</td>
+                            <td class="py-4 px-6"><strong>Tax-Free</strong> Access & Legacy</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-4 px-6 font-bold">Growth</td>
+                            <td class="py-4 px-6">Tax-Deferred</td>
+                            <td class="py-4 px-6">Tax-Deferred</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-4 px-6 font-bold">Withdrawals</td>
+                            <td class="py-4 px-6 text-myRed font-bold">Taxed as income</td>
+                            <td class="py-4 px-6 text-myGreen font-bold">Tax-Free (via loans)</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-4 px-6 font-bold">Legacy</td>
+                            <td class="py-4 px-6 text-myRed">Taxable value</td>
+                            <td class="py-4 px-6 text-myGreen font-bold">Tax-Free Death Benefit</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6 font-bold">Costs</td>
+                            <td class="py-4 px-6">Lower (initially)</td>
+                            <td class="py-4 px-6">Higher (includes ins. cost)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <p class="text-xl text-gray-800 leading-relaxed my-8">
+                <strong>An FIA</strong> is a simple, powerful protection tool.
+            </p>
+            <p class="text-xl text-gray-800 leading-relaxed my-8">
+                <strong>An IUL</strong> is a <em>complete</em> retirement strategy that solves for risk, growth, <em>and</em> taxes.
+            </p>
+        </section>
+
+        <!-- Section: Who Is This For? -->
+        <section class="mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-myBlue mb-6">Who Is This For?</h2>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                This strategy is NOT for 25-year-old day traders.
+            </p>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                This strategy is for people who have <strong>won the game</strong> and now want to <strong>keep their winnings.</strong>
+            </p>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                It's for you if:
+            </p>
+            <ul class="list-none space-y-4 mb-6">
+                <li class="text-xl leading-relaxed flex items-start">
+                    <span class="text-myBlue font-bold mr-3">&#9656;</span>
+                    You believe protecting your principal is <em>more</em> important than chasing high-risk gains.
+                </li>
+                <li class="text-xl leading-relaxed flex items-start">
+                    <span class="text-myBlue font-bold mr-3">&#9656;</span>
+                    You are worried about a market crash wiping out your retirement.
+                </li>
+                <li class="text-xl leading-relaxed flex items-start">
+                    <span class="text-myBlue font-bold mr-3">&#9656;</span>
+                    You are worried about future tax rates destroying your 401(k) income.
+                </li>
+                <li class="text-xl leading-relaxed flex items-start">
+                    <span class="text-myBlue font-bold mr-3">&#9656;</span>
+                    You want to sleep at night.
+                </li>
+            </ul>
+        </section>
+
+        <!-- Section: CTA -->
+        <section class="mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-myBlue mb-6">Your Free "Retirement Shield" Blueprint</h2>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                This guide gave you the "what" and the "why." The next step is the "how."
+            </p>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                We are offering a free, no-obligation "Retirement Shield" Blueprint session.
+            </p>
+            <p class="text-xl text-gray-800 font-bold leading-relaxed mb-6">
+                This is not a sales call.
+            </p>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                You will bring your actual numbers, and we will custom-build a "0% Floor" model for you. You will see, with your own numbers, how this strategy can protect your principal and create a tax-free income stream for life.
+            </p>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                If it works for you, we can discuss how to implement it. If not, you walk away with an incredibly valuable analysis of your retirement (worth far more than \$1,000).
+            </p>
+            <p class="text-2xl text-gray-900 font-bold leading-relaxed my-8">
+                Don't wait for the next crash to see if your plan works.
+            </p>
+            
+            <!-- Contact Info -->
+            <div class="text-center border-t border-gray-300 pt-10 mt-16">
+                <p class="text-2xl font-bold text-gray-900">[Your Name/Company Name Here]</p>
+                <p class="text-xl text-gray-700 mt-2">[Your Title]</p>
+                <div class="mt-6 space-y-3">
+                    <p class="text-xl text-gray-700">[Phone Number]</p>
+                    <p class="text-xl text-gray-700">[Email Address]</p>
+                    <p class="text-xl text-gray-700">[Website]</p>
+                </div>
+            </div>
+        </section>
+
+    </div> <!-- End Main Container -->
+
+</body>
+</html>
+
