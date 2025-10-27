@@ -12,9 +12,27 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
+        @media print {
+            .no-print { display: none; }
+            body { background: white; }
+        }
     </style>
     <script>
-        // Custom Tailwind config to add the Inter font family
+        // ============================================
+        // CUSTOMIZATION CONFIG - EDIT THIS SECTION
+        // ============================================
+        const companyInfo = {
+            name: "{{COMPANY_NAME}}",
+            title: "{{YOUR_TITLE}}",
+            phone: "{{PHONE_NUMBER}}",
+            email: "{{EMAIL_ADDRESS}}",
+            website: "{{WEBSITE_URL}}"
+        };
+        // ============================================
+        // END CUSTOMIZATION - DO NOT EDIT BELOW
+        // ============================================
+
+        // Custom Tailwind config
         tailwind.config = {
             theme: {
                 extend: {
@@ -23,22 +41,31 @@
                     },
                     colors: {
                         myBlue: {
-                            DEFAULT: '#00529B', // rgb(0, 82, 155)
+                            DEFAULT: '#00529B',
                             dark: '#003a70'
                         },
                         myGreen: {
-                            DEFAULT: '#009432' // rgb(0, 148, 50)
+                            DEFAULT: '#009432'
                         },
                         myRed: {
-                            DEFAULT: '#C00000' // rgb(192, 0, 0)
+                            DEFAULT: '#C00000'
                         },
                         boxGray: {
-                            DEFAULT: '#F0F0F0' // rgb(240, 240, 240)
+                            DEFAULT: '#F0F0F0'
                         }
                     }
                 }
             }
         }
+
+        // Apply company info on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('company-name').textContent = companyInfo.name;
+            document.getElementById('company-title').textContent = companyInfo.title;
+            document.getElementById('company-phone').textContent = companyInfo.phone;
+            document.getElementById('company-email').textContent = companyInfo.email;
+            document.getElementById('company-website').textContent = companyInfo.website;
+        });
     </script>
 </head>
 <body class="bg-white font-sans">
@@ -68,7 +95,7 @@
         <!-- End Legal Disclaimer -->
 
         <!-- Custom Title Page -->
-        <div class="h-screen flex flex-col justify-center items-center text-center -mt-16">
+        <div class="min-h-screen flex flex-col justify-center items-center text-center">
             <h1 class="text-5xl md:text-6xl font-bold text-myBlue leading-tight">
                 The "0% Floor" Strategy
             </h1>
@@ -115,7 +142,7 @@
 
             <!-- Insight Box -->
             <div class="bg-boxGray border-l-8 border-myBlue rounded-r-lg p-6 my-10 shadow-lg">
-                <p class="text-2xl font-bold text-myBlue mb-3">The \$1,000 Insight:</p>
+                <p class="text-2xl font-bold text-myBlue mb-3">The Key Insight:</p>
                 <p class="text-xl text-black leading-relaxed">
                     Traditional retirement plans force you to choose between <strong class="text-myRed">Market Risk</strong> and <strong class="text-myRed">Inflation Risk</strong>. This guide shows you the third option they don't talk about.
                 </p>
@@ -136,16 +163,16 @@
                 It's a simple concept: <strong>WHEN your returns happen matters more than your <em>average</em> return.</strong>
             </p>
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
-                Let's look at two retirees. Both have \$1,000,000. Both need to withdraw \$50,000 (5%) per year to live.
+                Let's look at two retirees. Both have $1,000,000. Both need to withdraw $50,000 (5%) per year to live.
             </p>
             <ul class="list-none space-y-4 mb-6">
                 <li class="text-xl leading-relaxed flex items-start">
                     <span class="text-myBlue font-bold mr-3">&#9656;</span>
-                    <strong>Retiree A (Traditional 60/40 Plan):</strong> Retires into a bear market.
+                    <span><strong>Retiree A (Traditional 60/40 Plan):</strong> Retires into a bear market.</span>
                 </li>
                 <li class="text-xl leading-relaxed flex items-start">
                     <span class="text-myBlue font-bold mr-3">&#9656;</span>
-                    <strong>Retiree B (0% Floor Strategy):</strong> Retires into the <em>exact same</em> bear market.
+                    <span><strong>Retiree B (0% Floor Strategy):</strong> Retires into the <em>exact same</em> bear market.</span>
                 </li>
             </ul>
 
@@ -164,22 +191,22 @@
                         <tr class="border-b">
                             <td class="py-4 px-6 font-bold">Start</td>
                             <td class="py-4 px-6"></td>
-                            <td class="py-4 px-6 font-bold">\$1,000,000</td>
+                            <td class="py-4 px-6 font-bold">$1,000,000</td>
                         </tr>
                         <tr class="border-b">
                             <td class="py-4 px-6">Year 1</td>
                             <td class="py-4 px-6 text-myRed font-medium">-20%</td>
-                            <td class="py-4 px-6">(\$800,000) - \$50,000 = <strong class="text-myRed">\$750,000</strong></td>
+                            <td class="py-4 px-6">($800,000) - $50,000 = <strong class="text-myRed">$750,000</strong></td>
                         </tr>
                         <tr class="border-b">
                             <td class="py-4 px-6">Year 2</td>
                             <td class="py-4 px-6 text-myRed font-medium">-15%</td>
-                            <td class="py-4 px-6">(\$637,500) - \$50,000 = <strong class="text-myRed">\$587,500</strong></td>
+                            <td class="py-4 px-6">($637,500) - $50,000 = <strong class="text-myRed">$587,500</strong></td>
                         </tr>
                         <tr>
                             <td class="py-4 px-6">Year 3</td>
                             <td class="py-4 px-6 text-myGreen font-medium">+10%</td>
-                            <td class="py-4 px-6">(\$646,250) - \$50,000 = <strong class="text-myRed">\$596,250</strong></td>
+                            <td class="py-4 px-6">($646,250) - $50,000 = <strong class="text-myRed">$596,250</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -203,22 +230,22 @@
                         <tr class="border-b">
                             <td class="py-4 px-6 font-bold">Start</td>
                             <td class="py-4 px-6"></td>
-                            <td class="py-4 px-6 font-bold">\$1,000,000</td>
+                            <td class="py-4 px-6 font-bold">$1,000,000</td>
                         </tr>
                         <tr class="border-b">
                             <td class="py-4 px-6">Year 1</td>
                             <td class="py-4 px-6 text-myRed font-medium">-20%</td>
-                            <td class="py-4 px-6">(\$1,000,000) - \$50,000 = <strong class="text-myGreen">\$950,000</strong></td>
+                            <td class="py-4 px-6">($1,000,000) - $50,000 = <strong class="text-myGreen">$950,000</strong></td>
                         </tr>
                         <tr class="border-b">
                             <td class="py-4 px-6">Year 2</td>
                             <td class="py-4 px-6 text-myRed font-medium">-15%</td>
-                            <td class="py-4 px-6">(\$950,000) - \$50,000 = <strong class="text-myGreen">\$900,000</strong></td>
+                            <td class="py-4 px-6">($950,000) - $50,000 = <strong class="text-myGreen">$900,000</strong></td>
                         </tr>
                         <tr>
                             <td class="py-4 px-6">Year 3</td>
                             <td class="py-4 px-6 text-myGreen font-medium">+10%</td>
-                            <td class="py-4 px-6">(\$990,000) - \$50,000 = <strong class="text-myGreen">\$940,000</strong></td>
+                            <td class="py-4 px-6">($990,000) - $50,000 = <strong class="text-myGreen">$940,000</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -238,37 +265,145 @@
             <h2 class="text-4xl md:text-5xl font-bold text-myBlue mb-6">The Second Catastrophe: The Tax Time Bomb</h2>
             
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
-                Let's say you win. You successfully save \$1 Million in your 401(k).
+                Let's say you win. You successfully save $1 Million in your 401(k).
             </p>
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
-                You don't have \$1 Million.
-                You have a \$1 Million problem.
+                You don't have $1 Million.
+                You have a $1 Million problem.
             </p>
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
-                Your 401(k) or IRA is a <strong>tax-deferred</strong> account. This is a partnership with the government. You saved on taxes up front, but you will pay them on <em>everything</em> you pull out.
+                Your <strong>Traditional 401(k) or Traditional IRA</strong> is a <strong>tax-deferred</strong> account. This is a partnership with the government. You saved on taxes up front, but you will pay them on <em>everything</em> you pull out.
+            </p>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                (Note: <strong>Roth IRAs and Roth 401(k)s</strong> work differently—you pay taxes up front, and withdrawals in retirement are tax-free. But you're still betting that your current tax rate is higher than your future rate. And many high earners don't qualify for Roth IRA contributions due to income limits.)
             </p>
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
                 And with national debt soaring, do you believe tax rates will be lower in 10, 15, or 20 years?
             </p>
-            
-            <!-- Placeholder for an image of a ticking time bomb -->
-            <div class="text-center my-8">
-                <img src="https://placehold.co/400x300/e0e0e0/555555?text=Ticking+Tax+Bomb" alt="Ticking tax time bomb" class="inline-block rounded-lg shadow-md"
-                     onerror="this.src='https://placehold.co/400x300/e0e0e0/555555?text=Image+Placeholder'">
+
+            <!-- Historical Tax Rate Chart -->
+            <div class="my-10 p-6 bg-gray-50 rounded-lg border border-gray-300">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Average Federal Income Tax Rate for Middle-Income Americans (1955-2025)</h3>
+                <div class="mb-6">
+                    <svg viewBox="0 0 800 400" class="w-full h-auto">
+                        <!-- Grid lines -->
+                        <line x1="80" y1="50" x2="80" y2="330" stroke="#ccc" stroke-width="2"/>
+                        <line x1="80" y1="330" x2="750" y2="330" stroke="#ccc" stroke-width="2"/>
+                        
+                        <!-- Y-axis labels -->
+                        <text x="50" y="55" font-size="14" fill="#333">20%</text>
+                        <text x="50" y="125" font-size="14" fill="#333">17%</text>
+                        <text x="50" y="195" font-size="14" fill="#333">14%</text>
+                        <text x="50" y="265" font-size="14" fill="#333">11%</text>
+                        <text x="50" y="335" font-size="14" fill="#333">8%</text>
+                        
+                        <!-- X-axis labels -->
+                        <text x="75" y="355" font-size="14" fill="#333">1955</text>
+                        <text x="175" y="355" font-size="14" fill="#333">1970</text>
+                        <text x="275" y="355" font-size="14" fill="#333">1985</text>
+                        <text x="375" y="355" font-size="14" fill="#333">2000</text>
+                        <text x="475" y="355" font-size="14" fill="#333">2010</text>
+                        <text x="575" y="355" font-size="14" fill="#333">2020</text>
+                        <text x="670" y="355" font-size="14" fill="#333">2025</text>
+                        
+                        <!-- Trend line (middle-class average rates) -->
+                        <polyline points="80,195 150,180 220,150 290,165 360,195 430,210 500,200 570,185 640,175 720,170" 
+                                  fill="none" stroke="#00529B" stroke-width="3"/>
+                        
+                        <!-- Data points -->
+                        <circle cx="80" cy="195" r="5" fill="#00529B"/>
+                        <circle cx="150" cy="180" r="5" fill="#00529B"/>
+                        <circle cx="220" cy="150" r="5" fill="#00529B"/>
+                        <circle cx="290" cy="165" r="5" fill="#00529B"/>
+                        <circle cx="360" cy="195" r="5" fill="#00529B"/>
+                        <circle cx="430" cy="210" r="5" fill="#00529B"/>
+                        <circle cx="500" cy="200" r="5" fill="#00529B"/>
+                        <circle cx="570" cy="185" r="5" fill="#00529B"/>
+                        <circle cx="640" cy="175" r="5" fill="#00529B"/>
+                        <circle cx="720" cy="170" r="5" fill="#00529B"/>
+                        
+                        <!-- Future projection (dashed) -->
+                        <polyline points="720,170 750,145" fill="none" stroke="#C00000" stroke-width="3" stroke-dasharray="5,5"/>
+                        <text x="650" y="125" font-size="16" fill="#C00000" font-weight="bold">Future?</text>
+                    </svg>
+                </div>
+                
+                <div class="text-lg text-gray-700 space-y-3">
+                    <p><strong>Key Historical Trends for Middle-Income Earners:</strong></p>
+                    <ul class="list-disc list-inside space-y-2 ml-4">
+                        <li>1955-1960s: Average rate around <strong>13-14%</strong></li>
+                        <li>1970s-1980s: Rates climbed to <strong>16-18%</strong> due to inflation and bracket creep</li>
+                        <li>1986: Tax Reform lowered rates temporarily to <strong>12-13%</strong></li>
+                        <li>1990s-2000s: Rates gradually increased back to <strong>14-15%</strong></li>
+                        <li>2010-2025: Effective rates for middle class hover around <strong>11-13%</strong></li>
+                    </ul>
+                    <p class="mt-4 font-semibold">
+                        Note: This represents the <em>effective</em> federal income tax rate (actual taxes paid ÷ income) for middle-income households earning $50,000-$100,000 in today's dollars. Most Americans never pay the "top bracket" rates you hear about in the news.
+                    </p>
+                </div>
             </div>
+
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                Here's the reality: <strong>Nobody knows what tax rates will be in 15, 30, or 50 years.</strong>
+            </p>
+            
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                <strong>If you believe taxes will INCREASE:</strong> A tax-deferred 401(k) means you're deferring taxes to pay them at higher rates later. You'd be better off with tax-free strategies like an IUL.
+            </p>
+            
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                <strong>If you believe taxes will DECREASE:</strong> A tax-deferred 401(k) might make sense—you defer high taxes now and pay lower taxes later.
+            </p>
+            
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                But here's what we know for certain: With $36+ trillion in national debt, ongoing entitlement programs, and infrastructure needs, the <em>trend</em> suggests rates are more likely to go up than down.
+            </p>
+
+            <div class="bg-yellow-50 border-l-8 border-yellow-600 rounded-r-lg p-6 my-8 shadow-lg">
+                <p class="text-2xl font-bold text-yellow-800 mb-4">The Hidden Tax: Inflation</p>
+                <p class="text-xl text-black leading-relaxed mb-4">
+                    Here's something most people don't realize: <strong>Inflation IS a tax</strong>—and it's one that every American pays.
+                </p>
+                <p class="text-xl text-black leading-relaxed mb-4">
+                    When the federal government spends more than it collects in revenue, it has two choices:
+                </p>
+                <ul class="list-none space-y-3 mb-4">
+                    <li class="text-lg leading-relaxed flex items-start">
+                        <span class="text-yellow-600 font-bold mr-3">1.</span>
+                        <span>Raise taxes (politically unpopular)</span>
+                    </li>
+                    <li class="text-lg leading-relaxed flex items-start">
+                        <span class="text-yellow-600 font-bold mr-3">2.</span>
+                        <span>Print more money (what actually happens)</span>
+                    </li>
+                </ul>
+                <p class="text-xl text-black leading-relaxed mb-4">
+                    When the government "prints money" (expands the money supply through the Federal Reserve), the value of every dollar you already own goes down. That's inflation. Your savings lose purchasing power.
+                </p>
+                <p class="text-xl text-black leading-relaxed mb-4">
+                    You can't legally print money when you overspend. Most Americans resort to credit cards instead—their own version of "printing money." And you don't need me to tell you how expensive that is: <strong class="text-myRed">30%+ interest rates or more!</strong>
+                </p>
+                <p class="text-xl text-black font-bold leading-relaxed">
+                    Now <em>that's</em> the biggest tax of all.
+                </p>
+            </div>
+            
+            <p class="text-xl text-gray-800 font-bold leading-relaxed mb-6">
+                The question isn't whether to save—saving is always better than not saving. The question is: <em>How</em> do you want to save?
+            </p>
 
             <!-- Insight Box -->
             <div class="bg-boxGray border-l-8 border-myBlue rounded-r-lg p-6 my-10 shadow-lg">
-                <p class="text-2xl font-bold text-myBlue mb-3">The \$1,000,000 Question:</p>
+                <p class="text-2xl font-bold text-myBlue mb-3">The Million Dollar Question:</p>
                 <p class="text-xl text-black leading-relaxed mb-4">
                     Which would you rather have?
                 </p>
                 <ul class="list-none space-y-4">
                     <li class="text-xl leading-relaxed">
-                        <strong>A) \$1,000,000 in a 401(k)</strong>, which, after 30% in future taxes, is <strong class="text-2xl text-myRed">\$700,000</strong> to spend.
+                        <strong>A) $1,000,000 in a Traditional 401(k)</strong>, which you'll withdraw gradually over 20-30 years. Even pulling out modest amounts each year, you'll likely pay around <strong class="text-2xl text-myRed">25-30%</strong> in federal taxes (plus state taxes in many states), leaving you roughly <strong class="text-2xl text-myRed">$700,000-$750,000</strong> to actually spend over your lifetime.
                     </li>
                     <li class="text-xl leading-relaxed">
-                        <strong>B) \$1,000,000 in a "0% Floor" IUL</strong>, which you can access 100% <strong class="text-2xl text-myGreen">tax-free</strong>.
+                        <strong>B) $1,000,000 in a "0% Floor" IUL</strong>, which you can access 100% <strong class="text-2xl text-myGreen">tax-free</strong> through policy loans—giving you the full million to use.
                     </li>
                 </ul>
                 <p class="text-xl text-black leading-relaxed font-bold mt-6">
@@ -295,8 +430,43 @@
                 </li>
             </ul>
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
-                You are not "in the market." The insurance company credits your account with interest <em>based on</em> a market index (like the S&P 500).
+                You are not "in the market." Here's what's really happening: <strong>You've swapped positions with the insurance company.</strong>
             </p>
+            
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                <em>The insurance company</em> is now in the market. They take the market risk. You don't.
+            </p>
+            
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                In exchange for taking on that risk, the insurance company credits your account with interest <em>based on</em> a market index (like the S&P 500)—but you never actually own the stocks.
+            </p>
+
+            <div class="bg-boxGray border-l-8 border-myGreen rounded-r-lg p-6 my-8 shadow-lg">
+                <p class="text-2xl font-bold text-myGreen mb-4">The Swap: What You Get</p>
+                <p class="text-xl text-black leading-relaxed mb-4">
+                    By "swapping positions" with the insurance company, here's what you receive:
+                </p>
+                <ul class="list-none space-y-3">
+                    <li class="text-lg leading-relaxed flex items-start">
+                        <span class="text-myGreen font-bold mr-3">✓</span>
+                        <span><strong>0% Floor Protection:</strong> You never lose money when the market crashes</span>
+                    </li>
+                    <li class="text-lg leading-relaxed flex items-start">
+                        <span class="text-myGreen font-bold mr-3">✓</span>
+                        <span><strong>Living Benefits:</strong> Access to death benefit if critically or chronically ill</span>
+                    </li>
+                    <li class="text-lg leading-relaxed flex items-start">
+                        <span class="text-myGreen font-bold mr-3">✓</span>
+                        <span><strong>Death Benefits:</strong> Typically 5x-10x your contributions, tax-free to your family</span>
+                    </li>
+                </ul>
+                <p class="text-xl text-black leading-relaxed mt-4 mb-4">
+                    <strong>What the insurance company asks in return:</strong> You agree to give up unlimited upside gains. They "cap" your returns at a maximum threshold (e.g., 10-12% in good years).
+                </p>
+                <p class="text-xl text-black font-bold leading-relaxed">
+                    You trade the potential for home-run gains for guaranteed protection and a massive death benefit.
+                </p>
+            </div>
 
             <p class="text-2xl font-bold text-gray-900 mt-8 mb-4">1. When the market goes UP...</p>
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
@@ -319,9 +489,60 @@
                 <p class="text-xl text-black leading-relaxed mb-4">
                     The "catch" is you give up the home-run gains. You'll never get the 30% up-year.
                 </p>
-                <p class="text-xl text-black leading-relaxed">
+                <p class="text-xl text-black leading-relaxed mb-6">
                     You are trading <strong>unlimited upside</strong> for <strong>zero downside</strong>. It's a trade retirees are winning every single day.
                 </p>
+
+                <!-- Critical Warning Section -->
+                <div class="border-t-2 border-myRed pt-6 mt-6">
+                    <p class="text-2xl font-bold text-myRed mb-4">⚠️ CRITICAL: Not All Indexes Are Created Equal</p>
+                    <p class="text-xl text-black leading-relaxed mb-4">
+                        Here's something most agents won't tell you: <strong>The index you choose makes or breaks your results.</strong>
+                    </p>
+                    <p class="text-xl text-black leading-relaxed mb-4">
+                        Some IUL policies offer "proprietary" or "custom" indexes that sound impressive but perform terribly. These are often volatile, obscure indexes that consistently return 0% or lose money—meaning you get the floor but never the growth.
+                    </p>
+                    <p class="text-xl text-black leading-relaxed mb-4">
+                        I learned this the hard way. I personally bought an IUL from F&G Insurance that was tied to a terrible proprietary index. Year after year, it returned 0%. The S&P 500 was up double digits, but my policy was going nowhere because the index they chose was fundamentally broken.
+                    </p>
+                    
+                    <div class="bg-white border-2 border-myRed rounded-lg p-5 my-6">
+                        <p class="text-xl font-bold text-myRed mb-3">The Simple Solution:</p>
+                        <p class="text-xl text-black leading-relaxed mb-4">
+                            Ask your financial advisor or insurance agent this exact question:
+                        </p>
+                        <p class="text-2xl font-bold text-center text-myBlue bg-blue-50 p-4 rounded my-4">
+                            "Which index option tracks the S&P 500 most closely?"
+                        </p>
+                        <p class="text-xl text-black leading-relaxed mb-3">
+                            The S&P 500 is time-tested, transparent, and has a 70+ year track record. It's not proprietary. It's not obscure. Everyone knows how it works.
+                        </p>
+                        <p class="text-xl text-black leading-relaxed mb-3">
+                            <strong>Red flags to watch for:</strong>
+                        </p>
+                        <ul class="list-none space-y-2 ml-4">
+                            <li class="text-lg leading-relaxed flex items-start">
+                                <span class="text-myRed font-bold mr-3">✗</span>
+                                <span>"Proprietary" or "custom" index names you've never heard of</span>
+                            </li>
+                            <li class="text-lg leading-relaxed flex items-start">
+                                <span class="text-myRed font-bold mr-3">✗</span>
+                                <span>Vague explanations about how the index is calculated</span>
+                            </li>
+                            <li class="text-lg leading-relaxed flex items-start">
+                                <span class="text-myRed font-bold mr-3">✗</span>
+                                <span>An agent who can't show you 10+ years of actual historical performance</span>
+                            </li>
+                            <li class="text-lg leading-relaxed flex items-start">
+                                <span class="text-myRed font-bold mr-3">✗</span>
+                                <span>Promises of "better than the S&P 500" with "less volatility"</span>
+                            </li>
+                        </ul>
+                        <p class="text-xl text-black font-bold leading-relaxed mt-4">
+                            Stick with indexes tied to the S&P 500. It's simple, proven, and honest.
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
         
@@ -382,31 +603,188 @@
         <!-- Section: Who Is This For? -->
         <section class="mb-12">
             <h2 class="text-4xl md:text-5xl font-bold text-myBlue mb-6">Who Is This For?</h2>
+            
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
-                This strategy is NOT for 25-year-old day traders.
+                Let's be clear about when each strategy makes sense:
             </p>
+
+            <div class="bg-boxGray border-l-8 border-myBlue rounded-r-lg p-6 my-8 shadow-lg">
+                <p class="text-2xl font-bold text-myBlue mb-4">Fixed Index Annuities (FIAs)</p>
+                <p class="text-xl text-black leading-relaxed mb-4">
+                    FIAs are <strong>NOT</strong> for 25-year-olds just starting out. These are for people who have <strong>won the game</strong> and now want to <strong>keep their winnings.</strong>
+                </p>
+                <p class="text-xl text-black leading-relaxed">
+                    FIAs make the most sense when you're rolling over an existing 401(k) or IRA and want guaranteed protection with market-linked growth.
+                </p>
+            </div>
+
+            <div class="bg-boxGray border-l-8 border-myGreen rounded-r-lg p-6 my-8 shadow-lg">
+                <p class="text-2xl font-bold text-myGreen mb-4">Indexed Universal Life (IUL)</p>
+                <p class="text-xl text-black leading-relaxed mb-4">
+                    IULs <strong>CAN</strong> be an excellent strategy for young investors in their 20s and 30s who are just beginning their investment journey.
+                </p>
+                <p class="text-xl text-black leading-relaxed">
+                    Why? Because you're building a <em>three-in-one</em> financial vehicle from day one.
+                </p>
+            </div>
+
+            <h3 class="text-3xl font-bold text-gray-900 mt-10 mb-6">The "Bundling" Advantage of IUL</h3>
+            
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
-                This strategy is for people who have <strong>won the game</strong> and now want to <strong>keep their winnings.</strong>
+                Think of how insurance companies sell you "bundled" home and auto coverage at a discount. An IUL bundles <em>three critical financial services</em> into one:
             </p>
+
+            <div class="grid md:grid-cols-3 gap-6 my-8">
+                <div class="bg-white border-2 border-myBlue rounded-lg p-6 shadow-md">
+                    <h4 class="text-xl font-bold text-myBlue mb-3">1. Cash Value Growth</h4>
+                    <p class="text-lg text-gray-700">Tax-deferred accumulation with 0% floor protection—your retirement fund.</p>
+                </div>
+                <div class="bg-white border-2 border-myBlue rounded-lg p-6 shadow-md">
+                    <h4 class="text-xl font-bold text-myBlue mb-3">2. Living Benefits</h4>
+                    <p class="text-lg text-gray-700">Access to death benefit if you become critically or chronically ill—your safety net.</p>
+                </div>
+                <div class="bg-white border-2 border-myBlue rounded-lg p-6 shadow-md">
+                    <h4 class="text-xl font-bold text-myBlue mb-3">3. Death Benefits</h4>
+                    <p class="text-lg text-gray-700">Tax-free legacy for your family—protecting them from financial disaster.</p>
+                </div>
+            </div>
+
+            <h3 class="text-3xl font-bold text-gray-900 mt-10 mb-6">IUL vs. Roth IRA: The Cost Question</h3>
+            
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
-                It's for you if:
+                Let's address the elephant in the room: <strong class="text-myRed">Yes, IULs have higher costs than a Roth IRA.</strong>
+            </p>
+            
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                But here's what you need to understand: That same dollar in an IUL is funding <em>three different services simultaneously.</em>
+            </p>
+
+            <div class="overflow-x-auto shadow-md rounded-lg my-8">
+                <table class="w-full text-lg text-left text-gray-700">
+                    <thead class="text-lg text-gray-900 bg-gray-200">
+                        <tr>
+                            <th scope="col" class="py-4 px-6">What You Get</th>
+                            <th scope="col" class="py-4 px-6">Roth IRA</th>
+                            <th scope="col" class="py-4 px-6">IUL</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        <tr class="border-b">
+                            <td class="py-4 px-6 font-bold">Tax-Free Retirement Income</td>
+                            <td class="py-4 px-6 text-center text-myGreen text-2xl">✓</td>
+                            <td class="py-4 px-6 text-center text-myGreen text-2xl">✓</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-4 px-6 font-bold">0% Floor Protection</td>
+                            <td class="py-4 px-6 text-center text-myRed text-2xl">✗</td>
+                            <td class="py-4 px-6 text-center text-myGreen text-2xl">✓</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-4 px-6 font-bold">Living Benefits (Critical Illness)</td>
+                            <td class="py-4 px-6 text-center text-myRed text-2xl">✗</td>
+                            <td class="py-4 px-6 text-center text-myGreen text-2xl">✓</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-4 px-6 font-bold">Tax-Free Death Benefit for Family</td>
+                            <td class="py-4 px-6 text-center text-myRed text-2xl">✗</td>
+                            <td class="py-4 px-6 text-center text-myGreen text-2xl">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6 font-bold">Annual Cost</td>
+                            <td class="py-4 px-6 text-myGreen font-bold">Lower</td>
+                            <td class="py-4 px-6 text-myRed font-bold">Higher</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="text-xl text-gray-800 font-bold leading-relaxed mb-6">
+                The question isn't about cost—it's about <em>value.</em>
+            </p>
+
+            <h3 class="text-3xl font-bold text-gray-900 mt-10 mb-6">Who Should Consider Each Strategy?</h3>
+
+            <div class="bg-green-50 border-l-8 border-green-600 rounded-r-lg p-6 my-6 shadow-lg">
+                <p class="text-2xl font-bold text-green-800 mb-4">A Roth IRA May Be Right For You If:</p>
+                <ul class="list-none space-y-3">
+                    <li class="text-xl leading-relaxed flex items-start">
+                        <span class="text-green-600 font-bold mr-3">&#9656;</span>
+                        <span>You have minimal financial liabilities (no mortgage, car loans, or credit card debt)</span>
+                    </li>
+                    <li class="text-xl leading-relaxed flex items-start">
+                        <span class="text-green-600 font-bold mr-3">&#9656;</span>
+                        <span>You're single or have no dependents</span>
+                    </li>
+                    <li class="text-xl leading-relaxed flex items-start">
+                        <span class="text-green-600 font-bold mr-3">&#9656;</span>
+                        <span>You already have adequate life and disability insurance elsewhere</span>
+                    </li>
+                    <li class="text-xl leading-relaxed flex items-start">
+                        <span class="text-green-600 font-bold mr-3">&#9656;</span>
+                        <span>You want the absolute lowest cost structure</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-blue-50 border-l-8 border-myBlue rounded-r-lg p-6 my-6 shadow-lg">
+                <p class="text-2xl font-bold text-myBlue mb-4">An IUL May Be Right For You If:</p>
+                <ul class="list-none space-y-3">
+                    <li class="text-xl leading-relaxed flex items-start">
+                        <span class="text-myBlue font-bold mr-3">&#9656;</span>
+                        <span>You have significant liabilities: mortgage, auto loans, student debt, or credit card balances</span>
+                    </li>
+                    <li class="text-xl leading-relaxed flex items-start">
+                        <span class="text-myBlue font-bold mr-3">&#9656;</span>
+                        <span>You have a spouse, children, or aging parents who depend on your income</span>
+                    </li>
+                    <li class="text-xl leading-relaxed flex items-start">
+                        <span class="text-myBlue font-bold mr-3">&#9656;</span>
+                        <span>You want to protect your family from losing their home if something happens to you</span>
+                    </li>
+                    <li class="text-xl leading-relaxed flex items-start">
+                        <span class="text-myBlue font-bold mr-3">&#9656;</span>
+                        <span>You live in a state where certain debts can pass to your children or spouse</span>
+                    </li>
+                    <li class="text-xl leading-relaxed flex items-start">
+                        <span class="text-myBlue font-bold mr-3">&#9656;</span>
+                        <span>You want a comprehensive solution that protects against market loss, critical illness, AND provides a legacy</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-boxGray border-l-8 border-myRed rounded-r-lg p-6 my-8 shadow-lg">
+                <p class="text-2xl font-bold text-myRed mb-4">Critical Reality Check:</p>
+                <p class="text-xl text-black leading-relaxed mb-4">
+                    <strong>Common family liabilities include:</strong> Mortgage debt, auto loans, credit card balances, student loans, medical debt, business obligations, and co-signed loans.
+                </p>
+                <p class="text-xl text-black leading-relaxed">
+                    <strong>In some states</strong>, certain types of debt can legally transfer to surviving family members. If you pass away with outstanding obligations, an IUL's death benefit can prevent your family from inheriting your debt burden—or worse, losing their home.
+                </p>
+            </div>
+
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                This strategy is for you if:
             </p>
             <ul class="list-none space-y-4 mb-6">
                 <li class="text-xl leading-relaxed flex items-start">
                     <span class="text-myBlue font-bold mr-3">&#9656;</span>
-                    You believe protecting your principal is <em>more</em> important than chasing high-risk gains.
+                    <span>You believe protecting your principal is <em>more</em> important than chasing high-risk gains.</span>
                 </li>
                 <li class="text-xl leading-relaxed flex items-start">
                     <span class="text-myBlue font-bold mr-3">&#9656;</span>
-                    You are worried about a market crash wiping out your retirement.
+                    <span>You are worried about a market crash wiping out your retirement.</span>
                 </li>
                 <li class="text-xl leading-relaxed flex items-start">
                     <span class="text-myBlue font-bold mr-3">&#9656;</span>
-                    You are worried about future tax rates destroying your 401(k) income.
+                    <span>You are worried about future tax rates destroying your 401(k) income.</span>
                 </li>
                 <li class="text-xl leading-relaxed flex items-start">
                     <span class="text-myBlue font-bold mr-3">&#9656;</span>
-                    You want to sleep at night.
+                    <span>You want to protect your family from financial disaster if something happens to you.</span>
+                </li>
+                <li class="text-xl leading-relaxed flex items-start">
+                    <span class="text-myBlue font-bold mr-3">&#9656;</span>
+                    <span>You want to sleep at night.</span>
                 </li>
             </ul>
         </section>
@@ -427,20 +805,22 @@
                 You will bring your actual numbers, and we will custom-build a "0% Floor" model for you. You will see, with your own numbers, how this strategy can protect your principal and create a tax-free income stream for life.
             </p>
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
-                If it works for you, we can discuss how to implement it. If not, you walk away with an incredibly valuable analysis of your retirement (worth far more than \$1,000).
+                If it works for you, we can discuss how to implement it. If not, you walk away with an incredibly valuable analysis of your retirement.
             </p>
             <p class="text-2xl text-gray-900 font-bold leading-relaxed my-8">
                 Don't wait for the next crash to see if your plan works.
             </p>
             
-            <!-- Contact Info -->
+            <!-- ============================================ -->
+            <!-- CONTACT INFO - AUTO-POPULATED FROM CONFIG -->
+            <!-- ============================================ -->
             <div class="text-center border-t border-gray-300 pt-10 mt-16">
-                <p class="text-2xl font-bold text-gray-900">[Your Name/Company Name Here]</p>
-                <p class="text-xl text-gray-700 mt-2">[Your Title]</p>
+                <p class="text-2xl font-bold text-gray-900" id="company-name">Your Company Name</p>
+                <p class="text-xl text-gray-700 mt-2" id="company-title">Your Title</p>
                 <div class="mt-6 space-y-3">
-                    <p class="text-xl text-gray-700">[Phone Number]</p>
-                    <p class="text-xl text-gray-700">[Email Address]</p>
-                    <p class="text-xl text-gray-700">[Website]</p>
+                    <p class="text-xl text-gray-700" id="company-phone">(555) 123-4567</p>
+                    <p class="text-xl text-gray-700" id="company-email">contact@yourcompany.com</p>
+                    <p class="text-xl text-gray-700" id="company-website">www.yourcompany.com</p>
                 </div>
             </div>
         </section>
@@ -449,4 +829,3 @@
 
 </body>
 </html>
-
