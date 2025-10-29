@@ -12,27 +12,13 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
+        
         @media print {
             .no-print { display: none; }
             body { background: white; }
         }
     </style>
-    <script>
-        // ============================================
-        // CUSTOMIZATION CONFIG - EDIT THIS SECTION
-        // ============================================
-        const companyInfo = {
-            name: "{{COMPANY_NAME}}",
-            title: "{{YOUR_TITLE}}",
-            phone: "{{PHONE_NUMBER}}",
-            email: "{{EMAIL_ADDRESS}}",
-            website: "{{WEBSITE_URL}}"
-        };
-        // ============================================
-        // END CUSTOMIZATION - DO NOT EDIT BELOW
-        // ============================================
-
-        // Custom Tailwind config
+<script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -57,15 +43,6 @@
                 }
             }
         }
-
-        // Apply company info on page load
-        window.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('company-name').textContent = companyInfo.name;
-            document.getElementById('company-title').textContent = companyInfo.title;
-            document.getElementById('company-phone').textContent = companyInfo.phone;
-            document.getElementById('company-email').textContent = companyInfo.email;
-            document.getElementById('company-website').textContent = companyInfo.website;
-        });
     </script>
 </head>
 <body class="bg-white font-sans">
@@ -93,24 +70,67 @@
             </p>
         </div>
         <!-- End Legal Disclaimer -->
-
-        <!-- Custom Title Page -->
-        <div class="min-h-screen flex flex-col justify-center items-center text-center">
-            <h1 class="text-5xl md:text-6xl font-bold text-myBlue leading-tight">
-                The "0% Floor" Strategy
-            </h1>
-            <h2 class="text-3xl md:text-4xl font-bold mt-8 leading-tight">
-                How to Capture Market Gains Without Ever Risking a Loss.
-            </h2>
-            <p class="text-2xl italic text-gray-600 mt-12">
-                A Modern Approach to Protecting Your Retirement
-            </p>
+      <!-- Custom Title Page -->
+<div class="min-h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-myBlue to-blue-900 text-white p-12 relative overflow-hidden">
+    
+    <!-- Content -->
+    <div class="relative z-10 max-w-4xl mx-auto">
+        <h1 class="text-6xl md:text-7xl font-black leading-tight mb-8">
+            The "0% Floor" Strategy
+        </h1>
+        
+        <div class="w-24 h-1 bg-myGreen mx-auto mb-12"></div>
+        
+        <h2 class="text-3xl md:text-4xl font-light leading-tight mb-16">
+            Capture Market Gains Without Ever Risking a Loss
+        </h2>
+        
+        <!-- Visual Graph with Safety Net -->
+        <div class="bg-white bg-opacity-10 backdrop-blur rounded-2xl p-8 mb-16">
+            <svg viewBox="0 0 600 300" class="w-full h-auto">
+                <!-- Grid background -->
+                <line x1="50" y1="250" x2="550" y2="250" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                
+                <!-- Zero line (safety net) -->
+                <line x1="50" y1="250" x2="550" y2="250" stroke="#009432" stroke-width="4" stroke-dasharray="10,5"/>
+                <text x="30" y="255" fill="#009432" font-size="16" font-weight="bold">0%</text>
+                
+                <!-- Safety net pattern below zero line -->
+                <pattern id="net" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <line x1="0" y1="0" x2="20" y2="20" stroke="#009432" stroke-width="1" opacity="0.3"/>
+                    <line x1="20" y1="0" x2="0" y2="20" stroke="#009432" stroke-width="1" opacity="0.3"/>
+                </pattern>
+                <rect x="50" y="250" width="500" height="40" fill="url(#net)"/>
+                
+                <!-- Market line going up with volatility but never below zero -->
+                <polyline points="50,250 100,220 150,180 200,200 250,150 300,170 350,120 400,140 450,80 500,100 550,50" 
+                          fill="none" stroke="white" stroke-width="4"/>
+                
+                <!-- Up arrow at end -->
+                <polygon points="550,50 540,65 560,65" fill="white"/>
+                
+                <!-- Labels -->
+                <text x="280" y="30" fill="white" font-size="18" font-weight="bold" text-anchor="middle">Market Growth</text>
+                <text x="500" y="280" fill="#009432" font-size="14" font-weight="bold">Protected Floor</text>
+            </svg>
         </div>
-        <!-- End Title Page -->
+        
+        <p class="text-xl font-light opacity-90 mb-16">
+            The Modern Retirement Blueprint Wall Street Doesn't Want You to Know
+        </p>
+        
+        <!-- Author info at bottom -->
+        <div class="pt-8 border-t border-white border-opacity-20">
+            <p class="text-2xl font-semibold">{{company_name}}</p>
+            <p class="text-lg mt-2 opacity-80">{{title}}</p>
+        </div>
+    </div>
+</div>
+<!-- End Title Page -->
 
-        <!-- Section: The "Retiree's Dilemma" -->
+        <!-- Section: The Two Risks Destroying Retirements -->
         <section class="mb-12">
-            <h2 class="text-4xl md:text-5xl font-bold text-myBlue mb-6">The "Retiree's Dilemma"</h2>
+            <h2 class="text-4xl md:text-5xl font-bold text-myBlue mb-6">The Two Risks Destroying Retirements</h2>
             
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
                 For 40 years, you're told to save in a 401(k) or IRA.
@@ -127,43 +147,31 @@
             <ul class="list-none space-y-4 mb-6">
                 <li class="text-xl leading-relaxed flex items-start">
                     <span class="text-myBlue font-bold mr-3">&#9656;</span>
-                    <strong>OPTION A (RISK):</strong> Stay in the market and pray a crash doesn't wipe out 30% of your life savings.
+                    <span><strong>OPTION A (RISK):</strong> Stay in the market and pray a crash doesn't wipe out 30% of your life savings.</span>
                 </li>
                 <li class="text-xl leading-relaxed flex items-start">
                     <span class="text-myBlue font-bold mr-3">&#9656;</span>
-                    <strong>OPTION B (INFLATION):</strong> Flee to "safety" and watch your purchasing power die a slow death.
+                    <span><strong>OPTION B (INFLATION):</strong> Flee to "safety" and watch your purchasing power die a slow death.</span>
                 </li>
             </ul>
 
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
-                What if this is a false choice?
-                What if you could reject both options?
+                What if this is a false choice? What if you could reject both options?
             </p>
 
-            <!-- Insight Box -->
-            <div class="bg-boxGray border-l-8 border-myBlue rounded-r-lg p-6 my-10 shadow-lg">
-                <p class="text-2xl font-bold text-myBlue mb-3">The Key Insight:</p>
-                <p class="text-xl text-black leading-relaxed">
-                    Traditional retirement plans force you to choose between <strong class="text-myRed">Market Risk</strong> and <strong class="text-myRed">Inflation Risk</strong>. This guide shows you the third option they don't talk about.
-                </p>
-            </div>
-        </section>
-
-        <!-- Section: Catastrophic Risk -->
-        <section class="mb-12">
-            <h2 class="text-4xl md:text-5xl font-bold text-myBlue mb-6">The Catastrophic Risk No One Talks About</h2>
+            <h3 class="text-3xl font-bold text-gray-900 mt-10 mb-6">The Catastrophic Risk No One Talks About</h3>
             
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
-                This is the most important concept a retiree can understand.
-            </p>
-            <p class="text-xl text-gray-800 leading-relaxed mb-6">
-                It's called <strong>Sequence of Returns Risk</strong>.
+                This is the most important concept a retiree can understand. It's called <strong>Sequence of Returns Risk</strong>.
             </p>
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
                 It's a simple concept: <strong>WHEN your returns happen matters more than your <em>average</em> return.</strong>
             </p>
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
                 Let's look at two retirees. Both have $1,000,000. Both need to withdraw $50,000 (5%) per year to live.
+            </p>
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                <strong>Note:</strong> A "60/40" portfolio means 60% stocks and 40% bonds—the traditional "balanced" allocation recommended by most financial advisors for retirees.
             </p>
             <ul class="list-none space-y-4 mb-6">
                 <li class="text-xl leading-relaxed flex items-start">
@@ -253,23 +261,22 @@
 
             <!-- Insight Box -->
             <div class="bg-boxGray border-l-8 border-myBlue rounded-r-lg p-6 my-10 shadow-lg">
-                <p class="text-2xl font-bold text-myBlue mb-3">The Result:</p>
+                <p class="text-2xl font-bold text-myBlue mb-3">The Key Insight:</p>
                 <p class="text-xl text-black leading-relaxed">
-                    <strong>Retiree A is facing financial ruin. Retiree B is whole.</strong> The "0% Floor" completely neutralized the number one risk in retirement. This single concept is the "secret" to a truly protected retirement.
+                    <strong>Retiree A is facing financial ruin. Retiree B is whole.</strong> The "0% Floor" completely neutralized the number one risk in retirement. Traditional retirement plans force you to choose between <strong class="text-myRed">Market Risk</strong> and <strong class="text-myRed">Inflation Risk</strong>. This guide shows you the third option they don't talk about.
                 </p>
             </div>
         </section>
 
         <!-- Section: Tax Time Bomb -->
         <section class="mb-12">
-            <h2 class="text-4xl md:text-5xl font-bold text-myBlue mb-6">The Second Catastrophe: The Tax Time Bomb</h2>
+            <h2 class="text-4xl md:text-5xl font-bold text-myBlue mb-6">The Tax Time Bomb</h2>
             
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
                 Let's say you win. You successfully save $1 Million in your 401(k).
             </p>
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
-                You don't have $1 Million.
-                You have a $1 Million problem.
+                You don't have $1 Million. You have a $1 Million problem.
             </p>
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
                 Your <strong>Traditional 401(k) or Traditional IRA</strong> is a <strong>tax-deferred</strong> account. This is a partnership with the government. You saved on taxes up front, but you will pay them on <em>everything</em> you pull out.
@@ -283,7 +290,7 @@
 
             <!-- Historical Tax Rate Chart -->
             <div class="my-10 p-6 bg-gray-50 rounded-lg border border-gray-300">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Average Federal Income Tax Rate for Middle-Income Americans (1955-2025)</h3>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Average Federal Income Tax Rate for Middle-Income Americans (1945-2025)</h3>
                 <div class="mb-6">
                     <svg viewBox="0 0 800 400" class="w-full h-auto">
                         <!-- Grid lines -->
@@ -292,53 +299,58 @@
                         
                         <!-- Y-axis labels -->
                         <text x="50" y="55" font-size="14" fill="#333">20%</text>
-                        <text x="50" y="125" font-size="14" fill="#333">17%</text>
-                        <text x="50" y="195" font-size="14" fill="#333">14%</text>
-                        <text x="50" y="265" font-size="14" fill="#333">11%</text>
-                        <text x="50" y="335" font-size="14" fill="#333">8%</text>
+                        <text x="50" y="108" font-size="14" fill="#333">17%</text>
+                        <text x="50" y="161" font-size="14" fill="#333">14%</text>
+                        <text x="50" y="214" font-size="14" fill="#333">11%</text>
+                        <text x="50" y="267" font-size="14" fill="#333">8%</text>
+                        <text x="50" y="320" font-size="14" fill="#333">5%</text>
                         
                         <!-- X-axis labels -->
-                        <text x="75" y="355" font-size="14" fill="#333">1955</text>
-                        <text x="175" y="355" font-size="14" fill="#333">1970</text>
-                        <text x="275" y="355" font-size="14" fill="#333">1985</text>
-                        <text x="375" y="355" font-size="14" fill="#333">2000</text>
-                        <text x="475" y="355" font-size="14" fill="#333">2010</text>
-                        <text x="575" y="355" font-size="14" fill="#333">2020</text>
-                        <text x="670" y="355" font-size="14" fill="#333">2025</text>
+                        <text x="70" y="355" font-size="13" fill="#333">1945</text>
+                        <text x="155" y="355" font-size="13" fill="#333">1960</text>
+                        <text x="240" y="355" font-size="13" fill="#333">1975</text>
+                        <text x="325" y="355" font-size="13" fill="#333">1990</text>
+                        <text x="410" y="355" font-size="13" fill="#333">2000</text>
+                        <text x="495" y="355" font-size="13" fill="#333">2010</text>
+                        <text x="580" y="355" font-size="13" fill="#333">2020</text>
+                        <text x="665" y="355" font-size="13" fill="#333">2025</text>
                         
-                        <!-- Trend line (middle-class average rates) -->
-                        <polyline points="80,195 150,180 220,150 290,165 360,195 430,210 500,200 570,185 640,175 720,170" 
+                        <!-- Trend line showing upward trend from 1945 -->
+                        <polyline points="80,280 140,250 200,220 260,200 320,185 380,195 440,210 500,200 560,185 620,175 680,170 720,165" 
                                   fill="none" stroke="#00529B" stroke-width="3"/>
                         
                         <!-- Data points -->
-                        <circle cx="80" cy="195" r="5" fill="#00529B"/>
-                        <circle cx="150" cy="180" r="5" fill="#00529B"/>
-                        <circle cx="220" cy="150" r="5" fill="#00529B"/>
-                        <circle cx="290" cy="165" r="5" fill="#00529B"/>
-                        <circle cx="360" cy="195" r="5" fill="#00529B"/>
-                        <circle cx="430" cy="210" r="5" fill="#00529B"/>
+                        <circle cx="80" cy="280" r="5" fill="#00529B"/>
+                        <circle cx="140" cy="250" r="5" fill="#00529B"/>
+                        <circle cx="200" cy="220" r="5" fill="#00529B"/>
+                        <circle cx="260" cy="200" r="5" fill="#00529B"/>
+                        <circle cx="320" cy="185" r="5" fill="#00529B"/>
+                        <circle cx="380" cy="195" r="5" fill="#00529B"/>
+                        <circle cx="440" cy="210" r="5" fill="#00529B"/>
                         <circle cx="500" cy="200" r="5" fill="#00529B"/>
-                        <circle cx="570" cy="185" r="5" fill="#00529B"/>
-                        <circle cx="640" cy="175" r="5" fill="#00529B"/>
-                        <circle cx="720" cy="170" r="5" fill="#00529B"/>
+                        <circle cx="560" cy="185" r="5" fill="#00529B"/>
+                        <circle cx="620" cy="175" r="5" fill="#00529B"/>
+                        <circle cx="680" cy="170" r="5" fill="#00529B"/>
+                        <circle cx="720" cy="165" r="5" fill="#00529B"/>
                         
                         <!-- Future projection (dashed) -->
-                        <polyline points="720,170 750,145" fill="none" stroke="#C00000" stroke-width="3" stroke-dasharray="5,5"/>
-                        <text x="650" y="125" font-size="16" fill="#C00000" font-weight="bold">Future?</text>
+                        <polyline points="720,165 750,140" fill="none" stroke="#C00000" stroke-width="3" stroke-dasharray="5,5"/>
+                        <text x="650" y="120" font-size="16" fill="#C00000" font-weight="bold">Future?</text>
                     </svg>
                 </div>
                 
                 <div class="text-lg text-gray-700 space-y-3">
                     <p><strong>Key Historical Trends for Middle-Income Earners:</strong></p>
                     <ul class="list-disc list-inside space-y-2 ml-4">
-                        <li>1955-1960s: Average rate around <strong>13-14%</strong></li>
-                        <li>1970s-1980s: Rates climbed to <strong>16-18%</strong> due to inflation and bracket creep</li>
-                        <li>1986: Tax Reform lowered rates temporarily to <strong>12-13%</strong></li>
-                        <li>1990s-2000s: Rates gradually increased back to <strong>14-15%</strong></li>
-                        <li>2010-2025: Effective rates for middle class hover around <strong>11-13%</strong></li>
+                        <li>1945-1950s: Post-war rates around <strong>6-8%</strong> (lowest in modern history)</li>
+                        <li>1960s: Rates climbed to <strong>10-12%</strong> as social programs expanded</li>
+                        <li>1970s-1980s: Peak rates of <strong>16-18%</strong> due to inflation and bracket creep</li>
+                        <li>1986: Tax Reform temporarily lowered rates to <strong>12-13%</strong></li>
+                        <li>1990s-2000s: Rates gradually increased to <strong>14-15%</strong></li>
+                        <li>2010-2025: Effective rates hover around <strong>11-13%</strong></li>
                     </ul>
                     <p class="mt-4 font-semibold">
-                        Note: This represents the <em>effective</em> federal income tax rate (actual taxes paid ÷ income) for middle-income households earning $50,000-$100,000 in today's dollars. Most Americans never pay the "top bracket" rates you hear about in the news.
+                        Note: This represents the <em>effective</em> federal income tax rate (actual taxes paid ÷ income) for middle-income households earning $50,000-$100,000 in today's dollars. The long-term trend from 1945 to today shows a general upward trajectory despite periodic reforms.
                     </p>
                 </div>
             </div>
@@ -360,9 +372,9 @@
             </p>
 
             <div class="bg-yellow-50 border-l-8 border-yellow-600 rounded-r-lg p-6 my-8 shadow-lg">
-                <p class="text-2xl font-bold text-yellow-800 mb-4">The Hidden Tax: Inflation</p>
+                <p class="text-2xl font-bold text-yellow-800 mb-4">The Hidden Tax: <strong>INFLATION IS A TAX</strong></p>
                 <p class="text-xl text-black leading-relaxed mb-4">
-                    Here's something most people don't realize: <strong>Inflation IS a tax</strong>—and it's one that every American pays.
+                    Here's something most people don't realize: <strong>INFLATION IS A TAX</strong>—and it's one that every American pays.
                 </p>
                 <p class="text-xl text-black leading-relaxed mb-4">
                     When the federal government spends more than it collects in revenue, it has two choices:
@@ -448,15 +460,15 @@
                 </p>
                 <ul class="list-none space-y-3">
                     <li class="text-lg leading-relaxed flex items-start">
-                        <span class="text-myGreen font-bold mr-3">✓</span>
+                        <span class="inline-block bg-myGreen text-white font-bold w-5 h-5 rounded-full text-center leading-5 mr-3 text-xs">✓</span>
                         <span><strong>0% Floor Protection:</strong> You never lose money when the market crashes</span>
                     </li>
                     <li class="text-lg leading-relaxed flex items-start">
-                        <span class="text-myGreen font-bold mr-3">✓</span>
+                        <span class="inline-block bg-myGreen text-white font-bold w-5 h-5 rounded-full text-center leading-5 mr-3 text-xs">✓</span>
                         <span><strong>Living Benefits:</strong> Access to death benefit if critically or chronically ill</span>
                     </li>
                     <li class="text-lg leading-relaxed flex items-start">
-                        <span class="text-myGreen font-bold mr-3">✓</span>
+                        <span class="inline-block bg-myGreen text-white font-bold w-5 h-5 rounded-full text-center leading-5 mr-3 text-xs">✓</span>
                         <span><strong>Death Benefits:</strong> Typically 5x-10x your contributions, tax-free to your family</span>
                     </li>
                 </ul>
@@ -470,8 +482,16 @@
 
             <p class="text-2xl font-bold text-gray-900 mt-8 mb-4">1. When the market goes UP...</p>
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
-                You get a portion of the gain, credited as interest. This is often limited by a "Cap" (e.g., 10%). If the market does 25%, you get 10%.
+                You get a portion of the gain, credited as interest. This is controlled by two key terms:
             </p>
+            <ul class="list-none space-y-3 mb-6 ml-6">
+                <li class="text-xl leading-relaxed">
+                    <strong>Participation Rate:</strong> The percentage of the index gain you receive. For example, a 100% participation rate means you get the full gain (up to the cap). A 50% participation rate means you get half the gain.
+                </li>
+                <li class="text-xl leading-relaxed">
+                    <strong>Cap Rate:</strong> The maximum return you can earn in a given year, regardless of how high the market goes. For example, with a 10% cap, if the market does 25%, you get 10%.
+                </li>
+            </ul>
 
             <p class="text-2xl font-bold text-gray-900 mt-8 mb-4">2. When the market goes DOWN...</p>
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
@@ -495,7 +515,7 @@
 
                 <!-- Critical Warning Section -->
                 <div class="border-t-2 border-myRed pt-6 mt-6">
-                    <p class="text-2xl font-bold text-myRed mb-4">⚠️ CRITICAL: Not All Indexes Are Created Equal</p>
+                    <p class="text-2xl font-bold text-myRed mb-4"><span class="inline-block bg-myRed text-white font-bold px-2 py-1 rounded text-sm mr-2">!</span> CRITICAL: Not All Indexes Are Created Equal</p>
                     <p class="text-xl text-black leading-relaxed mb-4">
                         Here's something most agents won't tell you: <strong>The index you choose makes or breaks your results.</strong>
                     </p>
@@ -503,43 +523,72 @@
                         Some IUL policies offer "proprietary" or "custom" indexes that sound impressive but perform terribly. These are often volatile, obscure indexes that consistently return 0% or lose money—meaning you get the floor but never the growth.
                     </p>
                     <p class="text-xl text-black leading-relaxed mb-4">
-                        I learned this the hard way. I personally bought an IUL from F&G Insurance that was tied to a terrible proprietary index. Year after year, it returned 0%. The S&P 500 was up double digits, but my policy was going nowhere because the index they chose was fundamentally broken.
+                        There are documented cases of policies tied to poorly designed proprietary indexes. Year after year, they returned 0%. The S&P 500 was up double digits, but these policies went nowhere because the underlying index was fundamentally flawed.
                     </p>
                     
-                    <div class="bg-white border-2 border-myRed rounded-lg p-5 my-6">
-                        <p class="text-xl font-bold text-myRed mb-3">The Simple Solution:</p>
+                    <div class="bg-white border-2 border-myBlue rounded-lg p-5 my-6">
+                        <p class="text-xl font-bold text-myBlue mb-3">How to Pick the Right Index: 3 Simple Questions</p>
                         <p class="text-xl text-black leading-relaxed mb-4">
-                            Ask your financial advisor or insurance agent this exact question:
+                            Ask your financial advisor or insurance agent these exact questions:
                         </p>
-                        <p class="text-2xl font-bold text-center text-myBlue bg-blue-50 p-4 rounded my-4">
-                            "Which index option tracks the S&P 500 most closely?"
-                        </p>
-                        <p class="text-xl text-black leading-relaxed mb-3">
-                            The S&P 500 is time-tested, transparent, and has a 70+ year track record. It's not proprietary. It's not obscure. Everyone knows how it works.
-                        </p>
-                        <p class="text-xl text-black leading-relaxed mb-3">
+                        
+                        <div class="my-6">
+                            <p class="text-xl font-bold text-myBlue mb-2">Question 1:</p>
+                            <p class="text-lg text-black bg-blue-50 p-4 rounded mb-3">
+                                "What is the participation rate and cap rate for your S&P 500 index option?"
+                            </p>
+                            <p class="text-base text-gray-700 mb-4">
+                                This tells you exactly how much of the S&P 500's gains you'll capture. Example: 100% participation with a 10% cap means if the S&P does 15%, you get 10%.
+                            </p>
+                        </div>
+
+                        <div class="my-6">
+                            <p class="text-xl font-bold text-myBlue mb-2">Question 2:</p>
+                            <p class="text-lg text-black bg-blue-50 p-4 rounded mb-3">
+                                "Can you show me the historical performance of this specific index option side-by-side with the actual S&P 500 for the last 10-20 years?"
+                            </p>
+                            <p class="text-base text-gray-700 mb-4">
+                                If they can't provide this, that's a red flag. Look for correlation—does it move WITH the S&P or in a completely different pattern?
+                            </p>
+                        </div>
+
+                        <div class="my-6">
+                            <p class="text-xl font-bold text-myBlue mb-2">Question 3:</p>
+                            <p class="text-lg text-black bg-blue-50 p-4 rounded mb-3">
+                                "Is this index option directly linked to the S&P 500, or is it a proprietary/synthetic index that's 'based on' the S&P?"
+                            </p>
+                            <p class="text-base text-gray-700 mb-4">
+                                Direct link = good. "Based on" or "enhanced" = usually means they've added layers that often underperform.
+                            </p>
+                        </div>
+
+                        <p class="text-xl text-black leading-relaxed mb-3 mt-6">
                             <strong>Red flags to watch for:</strong>
                         </p>
                         <ul class="list-none space-y-2 ml-4">
                             <li class="text-lg leading-relaxed flex items-start">
-                                <span class="text-myRed font-bold mr-3">✗</span>
+                                <span class="inline-block bg-myRed text-white font-bold w-5 h-5 rounded-full text-center leading-5 mr-3 text-xs">✗</span>
                                 <span>"Proprietary" or "custom" index names you've never heard of</span>
                             </li>
                             <li class="text-lg leading-relaxed flex items-start">
-                                <span class="text-myRed font-bold mr-3">✗</span>
+                                <span class="inline-block bg-myRed text-white font-bold w-5 h-5 rounded-full text-center leading-5 mr-3 text-xs">✗</span>
                                 <span>Vague explanations about how the index is calculated</span>
                             </li>
                             <li class="text-lg leading-relaxed flex items-start">
-                                <span class="text-myRed font-bold mr-3">✗</span>
+                                <span class="inline-block bg-myRed text-white font-bold w-5 h-5 rounded-full text-center leading-5 mr-3 text-xs">✗</span>
                                 <span>An agent who can't show you 10+ years of actual historical performance</span>
                             </li>
                             <li class="text-lg leading-relaxed flex items-start">
-                                <span class="text-myRed font-bold mr-3">✗</span>
+                                <span class="inline-block bg-myRed text-white font-bold w-5 h-5 rounded-full text-center leading-5 mr-3 text-xs">✗</span>
                                 <span>Promises of "better than the S&P 500" with "less volatility"</span>
+                            </li>
+                            <li class="text-lg leading-relaxed flex items-start">
+                                <span class="inline-block bg-myRed text-white font-bold w-5 h-5 rounded-full text-center leading-5 mr-3 text-xs">✗</span>
+                                <span>Terms like "volatility control," "balanced index," or other marketing buzzwords</span>
                             </li>
                         </ul>
                         <p class="text-xl text-black font-bold leading-relaxed mt-4">
-                            Stick with indexes tied to the S&P 500. It's simple, proven, and honest.
+                            The S&P 500 is time-tested, transparent, and has a 70+ year track record. Most IULs offer a straightforward S&P 500 point-to-point annual option. That's typically your safest bet. It's simple, proven, and honest.
                         </p>
                     </div>
                 </div>
@@ -600,9 +649,9 @@
             </p>
         </section>
 
-        <!-- Section: Who Is This For? -->
+        <!-- Section: IUL vs Roth IRA -->
         <section class="mb-12">
-            <h2 class="text-4xl md:text-5xl font-bold text-myBlue mb-6">Who Is This For?</h2>
+            <h2 class="text-4xl md:text-5xl font-bold text-myBlue mb-6">IUL vs. Roth IRA: The Honest Comparison</h2>
             
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
                 Let's be clear about when each strategy makes sense:
@@ -649,7 +698,7 @@
                 </div>
             </div>
 
-            <h3 class="text-3xl font-bold text-gray-900 mt-10 mb-6">IUL vs. Roth IRA: The Cost Question</h3>
+            <h3 class="text-3xl font-bold text-gray-900 mt-10 mb-6">The Cost Question</h3>
             
             <p class="text-xl text-gray-800 leading-relaxed mb-6">
                 Let's address the elephant in the room: <strong class="text-myRed">Yes, IULs have higher costs than a Roth IRA.</strong>
@@ -671,23 +720,23 @@
                     <tbody class="bg-white">
                         <tr class="border-b">
                             <td class="py-4 px-6 font-bold">Tax-Free Retirement Income</td>
-                            <td class="py-4 px-6 text-center text-myGreen text-2xl">✓</td>
-                            <td class="py-4 px-6 text-center text-myGreen text-2xl">✓</td>
+                            <td class="py-4 px-6 text-center text-myGreen text-2xl"><span class="font-bold text-myGreen">YES</span></td>
+                            <td class="py-4 px-6 text-center text-myGreen text-2xl"><span class="font-bold text-myGreen">YES</span></td>
                         </tr>
                         <tr class="border-b">
                             <td class="py-4 px-6 font-bold">0% Floor Protection</td>
-                            <td class="py-4 px-6 text-center text-myRed text-2xl">✗</td>
-                            <td class="py-4 px-6 text-center text-myGreen text-2xl">✓</td>
+                            <td class="py-4 px-6 text-center text-myRed text-2xl"><span class="font-bold text-myRed">NO</span></td>
+                            <td class="py-4 px-6 text-center text-myGreen text-2xl"><span class="font-bold text-myGreen">YES</span></td>
                         </tr>
                         <tr class="border-b">
                             <td class="py-4 px-6 font-bold">Living Benefits (Critical Illness)</td>
-                            <td class="py-4 px-6 text-center text-myRed text-2xl">✗</td>
-                            <td class="py-4 px-6 text-center text-myGreen text-2xl">✓</td>
+                            <td class="py-4 px-6 text-center text-myRed text-2xl"><span class="font-bold text-myRed">NO</span></td>
+                            <td class="py-4 px-6 text-center text-myGreen text-2xl"><span class="font-bold text-myGreen">YES</span></td>
                         </tr>
                         <tr class="border-b">
                             <td class="py-4 px-6 font-bold">Tax-Free Death Benefit for Family</td>
-                            <td class="py-4 px-6 text-center text-myRed text-2xl">✗</td>
-                            <td class="py-4 px-6 text-center text-myGreen text-2xl">✓</td>
+                            <td class="py-4 px-6 text-center text-myRed text-2xl"><span class="font-bold text-myRed">NO</span></td>
+                            <td class="py-4 px-6 text-center text-myGreen text-2xl"><span class="font-bold text-myGreen">YES</span></td>
                         </tr>
                         <tr>
                             <td class="py-4 px-6 font-bold">Annual Cost</td>
@@ -701,8 +750,11 @@
             <p class="text-xl text-gray-800 font-bold leading-relaxed mb-6">
                 The question isn't about cost—it's about <em>value.</em>
             </p>
+        </section>
 
-            <h3 class="text-3xl font-bold text-gray-900 mt-10 mb-6">Who Should Consider Each Strategy?</h3>
+        <!-- Section: Is This Strategy Right For You? -->
+        <section class="mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-myBlue mb-6">Is This Strategy Right For You?</h2>
 
             <div class="bg-green-50 border-l-8 border-green-600 rounded-r-lg p-6 my-6 shadow-lg">
                 <p class="text-2xl font-bold text-green-800 mb-4">A Roth IRA May Be Right For You If:</p>
@@ -811,16 +863,38 @@
                 Don't wait for the next crash to see if your plan works.
             </p>
             
-            <!-- ============================================ -->
-            <!-- CONTACT INFO - AUTO-POPULATED FROM CONFIG -->
-            <!-- ============================================ -->
+            <!-- Contact Info -->
             <div class="text-center border-t border-gray-300 pt-10 mt-16">
-                <p class="text-2xl font-bold text-gray-900" id="company-name">Your Company Name</p>
-                <p class="text-xl text-gray-700 mt-2" id="company-title">Your Title</p>
+                
+                <!-- Urgent CTA Box -->
+                <div class="bg-myRed text-white p-8 rounded-lg shadow-xl mb-8">
+                    <p class="text-3xl font-black mb-4">TAKE ACTION NOW</p>
+                    <p class="text-xl font-bold mb-6">Request Your Free "Retirement Shield" Blueprint Session</p>
+                    
+                    <div class="bg-white p-4 inline-block rounded-lg mb-6">
+                        <img src="{{qr_code_url}}" alt="Scan to book appointment" class="w-40 h-40">
+                    </div>
+                    
+                    <p class="text-xl font-bold mb-4">SCAN the QR code above</p>
+                    <p class="text-xl font-bold mb-6">OR</p>
+                    <p class="text-xl font-bold mb-4">CLICK this link to book:</p>
+                    <a href="{{booking_url}}" class="inline-block bg-white text-myRed font-black text-xl px-8 py-4 rounded-lg hover:bg-gray-100 mb-6">
+                        BOOK YOUR FREE SESSION NOW
+                    </a>
+                    
+                    <div class="border-t-2 border-white mt-6 pt-6">
+                        <p class="text-lg font-bold mb-3"><span class="inline-block bg-yellow-500 text-white px-2 py-1 rounded text-sm">!</span> LIMITED AVAILABILITY <span class="inline-block bg-yellow-500 text-white px-2 py-1 rounded text-sm">!</span></p>
+                        <p class="text-base mb-2">We only accept 10 new blueprint sessions per month.</p>
+                        <p class="text-base font-bold">Spots fill fast. Don't wait until the next market crash to protect your retirement.</p>
+                    </div>
+                </div>
+
+                <p class="text-2xl font-bold text-gray-900">{{company_name}}</p>
+                <p class="text-xl text-gray-700 mt-2">{{title}}</p>
                 <div class="mt-6 space-y-3">
-                    <p class="text-xl text-gray-700" id="company-phone">(555) 123-4567</p>
-                    <p class="text-xl text-gray-700" id="company-email">contact@yourcompany.com</p>
-                    <p class="text-xl text-gray-700" id="company-website">www.yourcompany.com</p>
+                    <p class="text-xl text-gray-700">{{phone}}</p>
+                    <p class="text-xl text-gray-700">{{email}}</p>
+                    <p class="text-xl text-gray-700">{{website}}</p>
                 </div>
             </div>
         </section>
